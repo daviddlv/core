@@ -45,7 +45,6 @@ final class FilterExtension implements QueryCollectionExtensionInterface
                 continue;
             }
 
-            dump($filter);
             $filter->apply($queryBuilder, $resourceClass, $operationName);
         }
     }

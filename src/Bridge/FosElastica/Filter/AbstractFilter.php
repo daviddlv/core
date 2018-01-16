@@ -277,7 +277,6 @@ abstract class AbstractFilter implements FilterInterface
     {
         $needsFixing = false;
 
-        dump($this->properties);
         if (null !== $this->properties) {
             foreach ($this->properties as $property => $value) {
                 if ($this->isPropertyNested($property) && $request->query->has(str_replace('.', '_', $property))) {
