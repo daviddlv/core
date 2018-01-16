@@ -417,6 +417,11 @@ final class ApiPlatformExtension extends Extension implements PrependExtensionIn
             $loader->load('doctrine_orm.xml');
         }
 
+        // FOSElastica support
+        if (isset($bundles['FOSElasticaBundle']) && $config['enable_fos_elastica']) {
+            $loader->load('fos_elastica.xml');
+        }
+
         // FOSUser support
         if (isset($bundles['FOSUserBundle']) && $config['enable_fos_user']) {
             $loader->load('fos_user.xml');

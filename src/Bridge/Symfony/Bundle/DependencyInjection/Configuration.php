@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace ApiPlatform\Core\Bridge\Symfony\Bundle\DependencyInjection;
 
 use ApiPlatform\Core\Exception\InvalidArgumentException;
+use FOS\ElasticaBundle\FOSElasticaBundle;
 use FOS\UserBundle\FOSUserBundle;
 use GraphQL\GraphQL;
 use Symfony\Bundle\TwigBundle\TwigBundle;
@@ -85,6 +86,7 @@ final class Configuration implements ConfigurationInterface
                         ->booleanNode('force_eager')->defaultTrue()->info('Force join on every relation. If disabled, it will only join relations having the EAGER fetch mode.')->end()
                     ->end()
                 ->end()
+                ->booleanNode('enable_fos_elastica')->defaultValue(class_exists(FOSElasticaBundle::class))->info('Enable the FOSElasticaBundle integration.')->end()
                 ->booleanNode('enable_fos_user')->defaultValue(class_exists(FOSUserBundle::class))->info('Enable the FOSUserBundle integration.')->end()
                 ->booleanNode('enable_nelmio_api_doc')
                     ->beforeNormalization()->always(function ($v) {
